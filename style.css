@@ -1,214 +1,612 @@
-/* Configurações Gerais / Reset */
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS
+   ========================================================================== */
+:root {
+    --cor-primaria: #1b4332;       /* Verde Floresta Escuro */
+    --cor-secundaria: #2d6a4f;     /* Verde Ecológico */
+    --cor-auxiliar: #40916c;       /* Verde Folha */
+    --cor-destaque: #d4a373;       /* Dourado Suave (Seda) */
+    --cor-fundo-claro: #f8f9fa;    /* Branco Cinzento */
+    --cor-fundo-card: #ffffff;     /* Branco Puro */
+    --cor-texto-escuro: #212529;   /* Grafite Escuro */
+    --cor-texto-claro: #6c757d;    /* Cinza Neutro */
+    --fonte-principal: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --transicao-suave: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--fonte-principal);
     scroll-behavior: smooth;
 }
 
 body {
-    background-color: #f4f7f5;
-    color: #333;
+    background-color: var(--cor-fundo-claro);
+    color: var(--cor-texto-escuro);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 60px 20px;
+    padding: 80px 24px;
     text-align: center;
 }
 
-/* Cabeçalho */
+h2 {
+    font-size: 2.5rem;
+    color: var(--cor-primaria);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--cor-destaque);
+    border-radius: 2px;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO E NAVEGAÇÃO
+   ========================================================================== */
 header {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 10%;
+    padding: 20px 5%;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #2e7d32; /* Verde Ecológico */
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--cor-primaria);
+    letter-spacing: -0.5px;
 }
 
 .logo span {
-    color: #81c784;
+    color: var(--cor-destaque);
 }
 
 nav ul {
     display: flex;
     list-style: none;
-}
-
-nav ul li {
-    margin-left: 20px;
+    gap: 30px;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #555;
+    color: var(--cor-texto-escuro);
     font-weight: 600;
-    transition: color 0.3s;
+    font-size: 1rem;
+    transition: var(--transicao-suave);
+    position: relative;
+    padding: 5px 0;
 }
 
 nav ul li a:hover {
-    color: #2e7d32;
+    color: var(--cor-secundaria);
 }
 
-/* Hero Section */
+/* Linha decorativa ao passar o mouse no menu (Desktop) */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--cor-destaque);
+    transition: var(--transicao-suave);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   3. BOTÃO MENU HAMBÚRGUER (RESPONSIVO)
+   ========================================================================== */
+.menu-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 20px;/**
+ * Rota da Seda Sustentável - Script Oficial
+ * Desenvolvido com foco em acessibilidade, usabilidade e performance.
+ */
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // ==========================================================================
+    // 1. CONTROLE DO MENU HAMBÚRGUER (UX / ACESSIBILIDADE)
+    // ==========================================================================
+    const btnHamburger = document.getElementById("btn-hamburger");
+    const navMenu = document.getElementById("nav-menu");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    /**
+     * Alterna o estado de abertura do menu lateral no mobile
+     */
+    const toggleMenu = () => {
+        const isMenuOpen = btnHam/**
+ * Rota da Seda Sustentável - Script Oficial
+ * Desenvolvido com foco em acessibilidade, usabilidade e performance.
+ */
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // ==========================================================================
+    // 1. CONTROLE DO MENU HAMBÚRGUER (UX / ACESSIBILIDADE)
+    // ==========================================================================
+    const btnHamburger = document.getElementById("btn-hamburger");
+    const navMenu = document.getElementById("nav-menu");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    /**
+     * Alterna o estado de abertura do menu lateral no mobile
+     */
+    const toggleMenu = () => {
+        const isMenuOpen = btnHamburger.classList.contains("active");
+        
+        // Alterna as classes CSS para animação
+        btnHamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+        
+        // Regra de Acessibilidade: Atualiza leitores de tela se o menu está expandido
+        btnHamburger.setAttribute("aria-expanded", !isMenuOpen);
+        
+        // Bloqueia a rolagem do fundo quando o menu estiver aberto no celular
+        document.body.style.overflow = isMenuOpen ? "auto" : "hidden";
+    };
+
+    // Ouvinte de clique para o botão hambúrguer
+    if (btnHamburger && navMenu) {
+        btnHamburger.addEventListener("click", toggleMenu);
+    }
+
+    // Fecha o menu automaticamente e restaura a rolagem ao clicar em um link
+    navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            if (navMenu.classList.contains("active")) {
+                toggleMenu();
+            }
+        });
+    });
+
+    // ==========================================================================
+    // 2. NAVEGAÇÃO SUAVE (SMOOTH SCROLL)
+    // ==========================================================================
+    const btnConhecer = document.getElementById("btn-conhecer");
+    const secaoSobre = document.getElementById("sobre");
+
+    if (btnConhecer && secaoSobre) {
+        btnConhecer.addEventListener("click", () => {
+            secaoSobre.scrollIntoView({ 
+                behavior: "smooth", 
+                block: "start" 
+            });
+        });
+    }
+
+    // ==========================================================================
+    // 3. INTERATIVIDADE DOS CARDS (CONTEÚDO DINÂMICO)
+    // ==========================================================================
+    const cards = document.querySelectorAll(".card");
+    const painelDetalhes = document.getElementById("painel-detalhes");
+    const textoDetalhe = document.getElementById("texto-detalhe");
+
+    cards.forEach(card => {
+        card.addEventListener("click", () => {
+            const infoDoCard = card.getAttribute("data-info");
+
+            if (painelDetalhes && textoDetalhe && infoDoCard) {
+                // Remove animações anteriores para resetar o efeito visual
+                painelDetalhes.classList.remove("detalhes-ativo");
+                
+                // Força o navegador a recalcular o layout (permite reiniciar a animação CSS)
+                void painelDetalhes.offsetWidth; 
+                
+                // Atualiza o texto interno com segurança contra ataques XSS
+                textoDetalhe.textContent = infoDoCard;
+                
+                // Ativa as classes de estilo e animação de surgimento
+                painelDetalhes.classList.remove("detalhes-oculto");
+                painelDetalhes.classList.add("detalhes-ativo");
+                
+                // Destaca visualmente o card selecionado limpando os outros
+                cards.forEach(c => c.style.backgroundColor = "var(--cor-fundo-card)");
+                card.style.backgroundColor = "#f1f8e9"; // Tom leve de verde para foco
+            }
+        });
+    });
+
+    // ==========================================================================
+    // 4. VALIDAÇÃO E ENVIO DE FORMULÁRIO (SIMULAÇÃO SEGURA)
+    // ==========================================================================
+    const formContato = document.getElementById("form-contato");
+
+    if (formContato) {
+        formContato.addEventListener("submit", (evento) => {
+            evento.preventDefault(); // Impede o recarregamento padrão da página
+            
+            // Coleta e limpa espaços extras dos inputs (Sanitização básica)
+            const nome = document.getElementById("nome").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const mensagem = document.getElementById("mensagem").value.trim();
+
+            // Validação extra caso o HTML falhe
+            if (!nome || !email || !mensagem) {
+                alert("Por favor, preencha todos os campos corretamente.");
+                return;
+            }
+
+            // Simulação de envio bem-sucedido
+            alert(`Obrigado pelo contato, ${nome}!\nSua mensagem sobre a Rota da Seda Sustentável foi enviada com sucesso para a nossa base de dados.`);
+            
+            // Reseta todos os campos do formulário
+            formContato.reset();
+            
+            // Garante que o fundo da página volte ao normal se o envio ocorrer de telas menores
+            document.body.style.overflow = "auto";
+        });
+    }
+});burger.classList.contains("active");
+        
+        // Alterna as classes CSS para animação
+        btnHamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+        
+        // Regra de Acessibilidade: Atualiza leitores de tela se o menu está expandido
+        btnHamburger.setAttribute("aria-expanded", !isMenuOpen);
+        
+        // Bloqueia a rolagem do fundo quando o menu estiver aberto no celular
+        document.body.style.overflow = isMenuOpen ? "auto" : "hidden";
+    };
+
+    // Ouvinte de clique para o botão hambúrguer
+    if (btnHamburger && navMenu) {
+        btnHamburger.addEventListener("click", toggleMenu);
+    }
+
+    // Fecha o menu automaticamente e restaura a rolagem ao clicar em um link
+    navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            if (navMenu.classList.contains("active")) {
+                toggleMenu();
+            }
+        });
+    });
+
+    // ==========================================================================
+    // 2. NAVEGAÇÃO SUAVE (SMOOTH SCROLL)
+    // ==========================================================================
+    const btnConhecer = document.getElementById("btn-conhecer");
+    const secaoSobre = document.getElementById("sobre");
+
+    if (btnConhecer && secaoSobre) {
+        btnConhecer.addEventListener("click", () => {
+            secaoSobre.scrollIntoView({ 
+                behavior: "smooth", 
+                block: "start" 
+            });
+        });
+    }
+
+    // ==========================================================================
+    // 3. INTERATIVIDADE DOS CARDS (CONTEÚDO DINÂMICO)
+    // ==========================================================================
+    const cards = document.querySelectorAll(".card");
+    const painelDetalhes = document.getElementById("painel-detalhes");
+    const textoDetalhe = document.getElementById("texto-detalhe");
+
+    cards.forEach(card => {
+        card.addEventListener("click", () => {
+            const infoDoCard = card.getAttribute("data-info");
+
+            if (painelDetalhes && textoDetalhe && infoDoCard) {
+                // Remove animações anteriores para resetar o efeito visual
+                painelDetalhes.classList.remove("detalhes-ativo");
+                
+                // Força o navegador a recalcular o layout (permite reiniciar a animação CSS)
+                void painelDetalhes.offsetWidth; 
+                
+                // Atualiza o texto interno com segurança contra ataques XSS
+                textoDetalhe.textContent = infoDoCard;
+                
+                // Ativa as classes de estilo e animação de surgimento
+                painelDetalhes.classList.remove("detalhes-oculto");
+                painelDetalhes.classList.add("detalhes-ativo");
+                
+                // Destaca visualmente o card selecionado limpando os outros
+                cards.forEach(c => c.style.backgroundColor = "var(--cor-fundo-card)");
+                card.style.backgroundColor = "#f1f8e9"; // Tom leve de verde para foco
+            }
+        });
+    });
+
+    // ==========================================================================
+    // 4. VALIDAÇÃO E ENVIO DE FORMULÁRIO (SIMULAÇÃO SEGURA)
+    // ==========================================================================
+    const formContato = document.getElementById("form-contato");
+
+    if (formContato) {
+        formContato.addEventListener("submit", (evento) => {
+            evento.preventDefault(); // Impede o recarregamento padrão da página
+            
+            // Coleta e limpa espaços extras dos inputs (Sanitização básica)
+            const nome = document.getElementById("nome").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const mensagem = document.getElementById("mensagem").value.trim();
+
+            // Validação extra caso o HTML falhe
+            if (!nome || !email || !mensagem) {
+                alert("Por favor, preencha todos os campos corretamente.");
+                return;
+            }
+
+            // Simulação de envio bem-sucedido
+            alert(`Obrigado pelo contato, ${nome}!\nSua mensagem sobre a Rota da Seda Sustentável foi enviada com sucesso para a nossa base de dados.`);
+            
+            // Reseta todos os campos do formulário
+            formContato.reset();
+            
+            // Garante que o fundo da página volte ao normal se o envio ocorrer de telas menores
+            document.body.style.overflow = "auto";
+        });
+    }
+});
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+.menu-hamburger .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--cor-primaria);
+    border-radius: 4px;
+    transition: var(--transicao-suave);
+}
+
+/* ==========================================================================
+   4. SEÇÃO HERO (BANNER PRINCIPAL)
+   ========================================================================== */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    background: linear-gradient(rgba(11, 29, 22, 0.65), rgba(11, 29, 22, 0.4)), 
                 url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-    height: 70vh;
+    height: 85vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white;
-    padding: 0 20px;
+    color: #ffffff;
+    padding: 0 24px;
 }
 
 .hero-content h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+    line-height: 1.2;
 }
 
 .hero-content p {
-    font-size: 20px;
-    margin-bottom: 30px;
-    max-width: 600px;
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .hero-content button {
-    background-color: #2e7d32;
-    color: white;
+    background-color: var(--cor-destaque);
+    color: var(--cor-primaria);
     border: none;
-    padding: 12px 30px;
-    font-size: 18px;
+    padding: 16px 36px;
+    font-size: 1rem;
+    font-weight: 700;
     cursor: pointer;
-    border-radius: 25px;
-    transition: background 0.3s, transform 0.2s;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3);
+    transition: var(--transicao-suave);
 }
 
 .hero-content button:hover {
-    background-color: #1b5e20;
-    transform: scale(1.05);
+    background-color: #e3b283;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(212, 163, 115, 0.5);
 }
 
-/* Pilares (Cards) */
+/* ==========================================================================
+   5. SEÇÃO SOBRE
+   ========================================================================== */
+#sobre p {
+    font-size: 1.15rem;
+    color: var(--cor-texto-claro);
+    max-width: 800px;
+    margin: 30px auto 0 auto;
+}
+
+#sobre strong {
+    color: var(--cor-secundaria);
+}
+
+/* ==========================================================================
+   6. SEÇÃO PILARES (CARDS)
+   ========================================================================== */
 .pilares-section {
-    background-color: #e8f5e9;
+    background-color: #edf2f0;
 }
 
 .grid-pilares {
     display: flex;
-    justify-content: space-around;
-    gap: 20px;
-    margin-top: 40px;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 50px;
     flex-wrap: wrap;
 }
 
 .card {
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
+    background: var(--cor-fundo-card);
+    padding: 40px 30px;
+    border-radius: 16px;
     flex: 1;
-    min-width: 250px;
+    min-width: 280px;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    transition: transform 0.3s, box-shadow 0.3s;
-    border-bottom: 4px solid #81c784;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    transition: var(--transicao-suave);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Detalhe sutil no topo do card */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: var(--cor-auxiliar);
+    transition: var(--transicao-suave);
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-    border-bottom: 4px solid #2e7d32;
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(45, 106, 79, 0.12);
+}
+
+.card:hover::before {
+    background-color: var(--cor-destaque);
+    height: 8px;
 }
 
 .card h3 {
-    margin-bottom: 10px;
-    color: #2e7d32;
+    margin-bottom: 15px;
+    color: var(--cor-primaria);
+    font-size: 1.4rem;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: var(--cor-texto-claro);
 }
 
 /* Painel de Detalhes Dinâmico */
 #painel-detalhes {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
-    border-left: 5px solid #2e7d32;
-    transition: all 0.3s ease;
+    margin-top: 40px;
+    padding: 24px;
+    background-color: var(--cor-fundo-card);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    border-left: 5px solid var(--cor-destaque);
+    transition: var(--transicao-suave);
 }
 
 .detalhes-oculto {
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
 .detalhes-ativo {
     opacity: 1;
-    background-color: #fff !important;
-    animation: fadeIn 0.5s ease-in-out;
+    animation: slideDown 0.4s forwards;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Formulário de Contato */
+/* ==========================================================================
+   7. FORMULÁRIO DE CONTATO
+   ========================================================================== */
 #form-contato {
-    max-width: 600px;
-    margin: 30px auto 0 auto;
+    max-width: 650px;
+    margin: 40px auto 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
+    background: var(--cor-fundo-card);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.04);
 }
 
-#form-contato input, #form-contato textarea {
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+#form-contato input, 
+#form-contato textarea {
+    width: 100%;
+    padding: 16px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #fafafa;
+    transition: var(--transicao-suave);
+    color: var(--cor-texto-escuro);
+}
+
+#form-contato input:focus, 
+#form-contato textarea:focus {
+    outline: none;
+    border-color: var(--cor-secundaria);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(45, 106, 79, 0.1);
 }
 
 #form-contato textarea {
-    height: 150px;
+    height: 140px;
     resize: vertical;
 }
 
 #form-contato button {
-    background-color: #333;
-    color: white;
+    background-color: var(--cor-primaria);
+    color: #ffffff;
     border: none;
-    padding: 15px;
-    font-size: 16px;
-    font-weight: bold;
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: 700;
     cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s;
+    border-radius: 10px;
+    transition: var(--transicao-suave);
 }
 
 #form-contato button:hover {
-    background-color: #2e7d32;
+    background-color: var(--cor-secundaria);
+    transform: translateY(-2px);
 }
 
-/* Rodapé */
+/* ==========================================================================
+   8. RODAPÉ
+   ========================================================================== */
 footer {
-    background-color: #222;
-    color: #aaa;
+    background-color: #12291e;
+    color: rgba(255, 255, 255, 0.7);
     text-align: center;
-    padding: 20px;
-    font-size: 14px;
+    padding: 30px 24px;
+    font-size: 0.9rem;
+    border-top: 3px solid var(--cor-destaque);
 }
+
+/* ==========================================================================
+   9. RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 76
