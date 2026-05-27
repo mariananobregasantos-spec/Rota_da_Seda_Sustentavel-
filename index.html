@@ -1,1 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rota da Seda Sustentável</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <header>
+        <div class="logo">Seda<span>Verde</span></div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">O Conceito</a></li>
+                <li><a href="#pilares">Pilares</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>A Nova Rota da Seda Sustentável</h1>
+            <p>Conectando nações, preservando o futuro através de infraestrutura verde e comércio eco-eficiente.</p>
+            <button id="btn-conhecer">Conheça o Projeto</button>
+        </div>
+    </section>
+
+    <section id="sobre" class="container">
+        <h2>Conectando o Passado ao Futuro</h2>
+        <p>A antiga Rota da Seda moldou o comércio mundial. Hoje, a <strong>Rota da Seda Sustentável</strong> reimagina esses caminhos globais, focando na redução da pegada de carbono, no uso de ferrovias elétricas de alta velocidade e em corredores comerciais que respeitam a biodiversidade local.</p>
+    </section>
+
+    <section id="pilares" class="pilares-section">
+        <div class="container">
+            <h2>Nossos Pilares</h2>
+            <div class="grid-pilares">
+                <div class="card" data-info="Investimento massivo em energia solar, eólica e hidrogênio verde ao longo de todo o trajeto comercial.">
+                    <h3>Energia Limpa</h3>
+                    <p>Clique para saber mais.</p>
+                </div>
+                <div class="card" data-info="Substituição do transporte poluente por frotas ferroviárias 100% elétricas e navios cargueiros a biocombustível.">
+                    <h3>Logística Verde</h3>
+                    <p>Clique para saber mais.</p>
+                </div>
+                <div class="card" data-info="Garantia de que o crescimento econômico respeite e regenere as florestas e ecossistemas locais.">
+                    <h3>Preservação</h3>
+                    <p>Clique para saber mais.</p>
+                </div>
+            </div>
+            <div id="painel-detalhes" class="detalhes-oculto">
+                <p id="texto-detalhe">Selecione um pilar acima para ver os detalhes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="container">
+        <h2>Faça Parte Desta Mudança</h2>
+        <form id="form-contato">
+            <input type="text" id="nome" placeholder="Seu Nome" required>
+            <input type="email" id="email" placeholder="Seu E-mail" required>
+            <textarea id="mensagem" placeholder="Sua Mensagem ou Sugestão" required></textarea>
+            <button type="submit">Enviar Mensagem</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Rota da Seda Sustentável. Desenvolvido para um amanhã mais verde.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
